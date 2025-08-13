@@ -2,10 +2,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowRight, Users, Award, Code, Palette, Shield, GraduationCap } from 'lucide-react';
-import { useDarkMode } from './_app';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import TeamCard from '../components/TeamCard';
+import Navbar from '../../components/Navbar';
+import { useDarkMode } from '../../components/DarkModeContext';
+import Footer from '../../components/Footer';
+import TeamCard from '../../components/TeamCard';
 
 export default function OurTeam() {
   const { isDarkMode } = useDarkMode();

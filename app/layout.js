@@ -1,7 +1,7 @@
-import { DarkModeProvider } from '../components/DarkModeContext'; 
-
+import ClientWrapper from '../components/ClientWrapper';
 import { Inter, Roboto_Mono } from "next/font/google";
 import "../styles/globals.css";
+
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -20,10 +20,8 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body>
-        <DarkModeProvider>
-          {children}
-        </DarkModeProvider>
+      <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
+        <ClientWrapper>{children}</ClientWrapper>
       </body>
     </html>
   );

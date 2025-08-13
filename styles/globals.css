@@ -22,29 +22,19 @@ body {
 ::-webkit-scrollbar-track {
   @apply bg-gray-100;
 }
-.dark ::-webkit-scrollbar-track {
-  background-color: #232946; /* moon-800 */
-}
 
 ::-webkit-scrollbar-thumb {
   @apply rounded-full;
   background-color: #ffb300; /* sun-500 */
 }
-.dark ::-webkit-scrollbar-thumb {
-  background-color: #3e5c76; /* moonBlue-600 */
-}
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: #ff6f00; /* sunOrange-500 */
-}
-.dark ::-webkit-scrollbar-thumb:hover {
-  background-color: #4f6d7a; /* moonBlue-500 */
 }
 
 /* Component styles */
 @layer components {
   .btn-primary {
-    /* Use gradient class directly in JSX, not here */
     @apply hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-white font-semibold py-3 px-6 rounded-lg;
   }
 
@@ -52,29 +42,12 @@ body {
     background-image: linear-gradient(to right, #ffb300, #ff6f00);
   }
 
-  .bg-moon-gradient {
-    background-image: linear-gradient(to right, #3e5c76, #232946);
-  }
-
-  .btn-primary-dark {
-    /* Use gradient class directly in JSX, not here */
-    @apply hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-lightText font-semibold py-3 px-6 rounded-lg;
-  }
-
   .card-light {
     @apply bg-white shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl border border-gray-100;
   }
 
-  .card-dark {
-    @apply bg-moon-800 shadow-lg hover:shadow-xl transition-all duration-300 rounded-xl border border-moon-700;
-  }
-
   .text-gradient-sun {
     @apply bg-gradient-to-r from-sun-500 to-sunOrange-500 bg-clip-text text-transparent;
-  }
-
-  .text-gradient-moon {
-    @apply bg-gradient-to-r from-moonBlue-400 to-moonBlue-600 bg-clip-text text-transparent;
   }
 
   .section-padding {
@@ -88,12 +61,9 @@ body {
   .form-input {
     @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-sun-500 focus:border-transparent bg-white text-gray-900 placeholder-gray-500 transition-colors duration-200;
   }
-  .dark .form-input {
-    @apply border-moon-600 focus:ring-moonBlue-500 bg-moon-700 text-lightText placeholder-moon-400;
-  }
 
   .nav-link {
-    @apply text-gray-700 dark:text-lightText hover:text-sun-500 dark:hover:text-moonBlue-400 font-medium transition-colors duration-200;
+    @apply text-gray-700 hover:text-sun-500 font-medium transition-colors duration-200;
   }
 
   .hero-text {
@@ -148,12 +118,12 @@ body {
   transition: transform 300ms ease-in-out;
 }
 
-/* Dark mode transition */
-* {
+/* Dark mode transition - COMMENTED OUT FOR LIGHT MODE ONLY */
+/* * {
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
-}
+} */
 
 /* Focus styles */
 .focus-ring {
-  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sun-500 dark:focus:ring-moonBlue-500;
+  @apply focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-sun-500;
 }

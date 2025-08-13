@@ -1,7 +1,6 @@
 // Team member card component
 import { LinkedIn, Twitter, Github, Mail } from 'lucide-react';
-import { useDarkMode } from '../pages/_app';
-
+import { useDarkMode } from '../components/DarkModeContext';
 const TeamCard = ({ 
   name, 
   role, 

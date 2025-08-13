@@ -1,11 +1,12 @@
+'use client';
 // Contact Us page with enquiry form
 import { useState } from 'react';
 import Head from 'next/head';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useDarkMode } from './_app';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { useDarkMode } from '../../components/DarkModeContext';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
 
 export default function Contact() {
   const { isDarkMode } = useDarkMode();

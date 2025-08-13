@@ -2,14 +2,13 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Code, Smartphone, Palette, Bug, GraduationCap, ArrowRight } from 'lucide-react';
-import { useDarkMode } from './_app';
-import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
-import ServiceCard from '../components/ServiceCard';
+import { useDarkMode } from '../../components/DarkModeContext';
+import Navbar from '../../components/Navbar';
+import Footer from '../../components/Footer';
+import ServiceCard from '../../components/ServiceCard';
 
 export default function Services() {
-  const { isDarkMode } = useDarkMode();
-
+const { isDarkMode, toggleDarkMode } = useDarkMode();
   // Comprehensive services data
   const services = [
     {

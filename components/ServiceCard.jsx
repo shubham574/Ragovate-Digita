@@ -1,6 +1,6 @@
 // Reusable Service Card component
 import { ArrowRight } from 'lucide-react';
-import { useDarkMode } from './DarkModeContext';
+import { useDarkMode } from '../components/DarkModeContext';
 const ServiceCard = ({ 
   title, 
   description, 

@@ -11,8 +11,7 @@ import ServiceCard from '../components/ServiceCard';
 import { useDarkMode } from '../components/DarkModeContext';
 
 export default function Home() {
-  const { isDarkMode } = useDarkMode();
-
+const { isDarkMode, toggleDarkMode } = useDarkMode();
   // Featured services data
   const featuredServices = [
     {
