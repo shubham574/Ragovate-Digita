@@ -4,12 +4,10 @@ import { useState } from 'react';
 import Head from 'next/head';
 import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
 import toast from 'react-hot-toast';
-import { useDarkMode } from '../../components/DarkModeContext';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 
 export default function Contact() {
-  const { isDarkMode } = useDarkMode();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -18,6 +16,7 @@ export default function Contact() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [errors, setErrors] = useState({});
+  const [justSubmitted, setJustSubmitted] = useState(false);
 
   // Form validation
   const validateForm = () => {
@@ -94,11 +93,20 @@ export default function Contact() {
 
       const result = await response.json();
 
-      if (response.ok) {
-        toast.success('Thank you! Your enquiry has been submitted successfully.');
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        setErrors({});
-      } else {
+     if (response.ok) {
+  toast.success('Thank you! Your enquiry has been submitted successfully.');
+  setFormData({ name: '', email: '', phone: '', message: '' });
+  setErrors({});
+  
+  // Show success state on button
+  setJustSubmitted(true);
+  
+  // Reset button state after 3 seconds
+  setTimeout(() => {
+    setJustSubmitted(false);
+  }, 3000);
+  
+} else {
         toast.error(result.message || 'Something went wrong. Please try again.');
       }
     } catch (error) {
@@ -171,20 +179,12 @@ export default function Contact() {
 
       <main className="pt-16 md:pt-20">
         {/* Hero Section */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-br from-darkBg via-moon-900 to-darkBg' 
-            : 'bg-gradient-to-br from-sun-50 via-white to-sunOrange-50'
-        }`}>
+        <section className="section-padding bg-gradient-to-br from-sun-50 via-white to-sunOrange-50">
           <div className="container-custom text-center">
-            <h1 className={`text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up ${
-              isDarkMode ? 'text-lightText' : 'text-gray-900'
-            }`}>
-              Get in <span className={`${isDarkMode ? 'text-gradient-moon' : 'text-gradient-sun'}`}>Touch</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up text-gray-900">
+              Get in <span className="text-gradient-sun">Touch</span>
             </h1>
-            <p className={`text-xl max-w-3xl mx-auto animate-fade-in-up ${
-              isDarkMode ? 'text-moon-200' : 'text-gray-600'
-            }`} style={{ animationDelay: '200ms' }}>
+            <p className="text-xl max-w-3xl mx-auto animate-fade-in-up text-gray-600" style={{ animationDelay: '200ms' }}>
               Ready to transform your digital presence? We're here to help you every step of the way. 
               Let's discuss your project and create something amazing together.
             </p>
@@ -200,29 +200,19 @@ export default function Contact() {
                 return (
                   <div
                     key={info.title}
-                    className={`text-center p-6 rounded-xl animate-fade-in-up ${
-                      isDarkMode ? 'card-dark' : 'card-light'
-                    }`}
+                    className="text-center p-6 rounded-xl animate-fade-in-up card-light"
                     style={{ animationDelay: `${index * 150}ms` }}
                   >
-                    <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                      isDarkMode ? 'bg-moon-gradient' : 'bg-sun-gradient'
-                    }`}>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-sun-gradient">
                       <IconComponent size={32} className="text-white" />
                     </div>
-                    <h3 className={`text-lg font-semibold mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <h3 className="text-lg font-semibold mb-2 text-gray-900">
                       {info.title}
                     </h3>
-                    <p className={`font-medium mb-1 ${
-                      isDarkMode ? 'text-moonBlue-400' : 'text-sun-500'
-                    }`}>
+                    <p className="font-medium mb-1 text-sun-500">
                       {info.details}
                     </p>
-                    <p className={`text-sm ${
-                      isDarkMode ? 'text-moon-300' : 'text-gray-600'
-                    }`}>
+                    <p className="text-sm text-gray-600">
                       {info.description}
                     </p>
                   </div>
@@ -233,33 +223,23 @@ export default function Contact() {
         </section>
 
         {/* Contact Form & Map Section */}
-        <section className={`section-padding ${
-          isDarkMode ? 'bg-moon-900/50' : 'bg-gray-50'
-        }`}>
+        <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               
               {/* Contact Form */}
-              <div className={`p-8 rounded-2xl animate-fade-in-up ${
-                isDarkMode ? 'card-dark' : 'card-light'
-              }`}>
-                <h2 className={`text-2xl md:text-3xl font-bold mb-6 ${
-                  isDarkMode ? 'text-lightText' : 'text-gray-900'
-                }`}>
+              <div className="p-8 rounded-2xl animate-fade-in-up card-light">
+                <h2 className="text-2xl md:text-3xl font-bold mb-6 text-gray-900">
                   Send us a Message
                 </h2>
-                <p className={`mb-8 ${
-                  isDarkMode ? 'text-moon-200' : 'text-gray-600'
-                }`}>
+                <p className="mb-8 text-gray-600">
                   Fill out the form below and we'll get back to you within 24 hours.
                 </p>
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
                   <div>
-                    <label htmlFor="name" className={`block text-sm font-medium mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-900">
                       Full Name *
                     </label>
                     <input
@@ -278,9 +258,7 @@ export default function Contact() {
 
                   {/* Email Field */}
                   <div>
-                    <label htmlFor="email" className={`block text-sm font-medium mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <label htmlFor="email" className="block text-sm font-medium mb-2 text-gray-900">
                       Email Address *
                     </label>
                     <input
@@ -299,9 +277,7 @@ export default function Contact() {
 
                   {/* Phone Field */}
                   <div>
-                    <label htmlFor="phone" className={`block text-sm font-medium mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <label htmlFor="phone" className="block text-sm font-medium mb-2 text-gray-900">
                       Phone Number *
                     </label>
                     <input
@@ -320,9 +296,7 @@ export default function Contact() {
 
                   {/* Message Field */}
                   <div>
-                    <label htmlFor="message" className={`block text-sm font-medium mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <label htmlFor="message" className="block text-sm font-medium mb-2 text-gray-900">
                       Message *
                     </label>
                     <textarea
@@ -340,37 +314,41 @@ export default function Contact() {
                   </div>
 
                   {/* Submit Button */}
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`w-full ${
-                      isDarkMode ? 'btn-primary-dark' : 'btn-primary'
-                    } disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center space-x-2`}
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                        <span>Sending...</span>
-                      </>
-                    ) : (
-                      <>
-                        <Send size={20} />
-                        <span>Send Message</span>
-                      </>
-                    )}
-                  </button>
+                 <button
+  type="submit"
+  disabled={isSubmitting || justSubmitted}
+  className={`w-full font-semibold py-3 px-6 rounded-lg shadow-lg flex items-center justify-center space-x-2 transition-all duration-300 ${
+    justSubmitted
+      ? 'bg-green-500 hover:bg-green-600 text-white'
+      : 'bg-gradient-to-r from-sun-500 to-sunOrange-500 text-white hover:from-sun-600 hover:to-sunOrange-600'
+  } disabled:opacity-50 disabled:cursor-not-allowed`}
+>
+  {isSubmitting ? (
+    <>
+      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
+      <span>Sending...</span>
+    </>
+  ) : justSubmitted ? (
+    <>
+      <CheckCircle size={20} />
+      <span>Message Sent Successfully!</span>
+    </>
+  ) : (
+    <>
+      <Send size={20} />
+      <span>Send Message</span>
+    </>
+  )}
+</button>
+
                 </form>
               </div>
 
               {/* Company Info & Map */}
               <div className="space-y-8">
                 {/* Company Details */}
-                <div className={`p-8 rounded-2xl animate-fade-in-up ${
-                  isDarkMode ? 'card-dark' : 'card-light'
-                }`} style={{ animationDelay: '200ms' }}>
-                  <h3 className={`text-xl font-bold mb-4 ${
-                    isDarkMode ? 'text-lightText' : 'text-gray-900'
-                  }`}>
+                <div className="p-8 rounded-2xl animate-fade-in-up card-light" style={{ animationDelay: '200ms' }}>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">
                     Why Choose Ragovate Digital?
                   </h3>
                   <div className="space-y-4">
@@ -383,12 +361,8 @@ export default function Contact() {
                       'On-time delivery commitment'
                     ].map((point, index) => (
                       <div key={index} className="flex items-start space-x-3">
-                        <CheckCircle size={16} className={`mt-1 flex-shrink-0 ${
-                          isDarkMode ? 'text-moonBlue-400' : 'text-sun-500'
-                        }`} />
-                        <span className={`text-sm ${
-                          isDarkMode ? 'text-moon-200' : 'text-gray-600'
-                        }`}>
+                        <CheckCircle size={16} className="mt-1 flex-shrink-0 text-sun-500" />
+                        <span className="text-sm text-gray-600">
                           {point}
                         </span>
                       </div>
@@ -397,29 +371,17 @@ export default function Contact() {
                 </div>
 
                 {/* Office Map Placeholder */}
-                <div className={`p-8 rounded-2xl animate-fade-in-up ${
-                  isDarkMode ? 'card-dark' : 'card-light'
-                }`} style={{ animationDelay: '400ms' }}>
-                  <h3 className={`text-xl font-bold mb-4 ${
-                    isDarkMode ? 'text-lightText' : 'text-gray-900'
-                  }`}>
+                <div className="p-8 rounded-2xl animate-fade-in-up card-light" style={{ animationDelay: '400ms' }}>
+                  <h3 className="text-xl font-bold mb-4 text-gray-900">
                     Visit Our Office
                   </h3>
-                  <div className={`w-full h-48 rounded-lg flex items-center justify-center ${
-                    isDarkMode ? 'bg-moon-800' : 'bg-gray-200'
-                  }`}>
+                  <div className="w-full h-48 rounded-lg flex items-center justify-center bg-gray-200">
                     <div className="text-center">
-                      <MapPin size={32} className={`mx-auto mb-2 ${
-                        isDarkMode ? 'text-moonBlue-400' : 'text-sun-500'
-                      }`} />
-                      <p className={`text-sm ${
-                        isDarkMode ? 'text-moon-300' : 'text-gray-600'
-                      }`}>
+                      <MapPin size={32} className="mx-auto mb-2 text-sun-500" />
+                      <p className="text-sm text-gray-600">
                         Interactive Map Coming Soon
                       </p>
-                      <p className={`text-xs mt-1 ${
-                        isDarkMode ? 'text-moon-400' : 'text-gray-500'
-                      }`}>
+                      <p className="text-xs mt-1 text-gray-500">
                         Varanasi, Uttar Pradesh, India
                       </p>
                     </div>
@@ -434,14 +396,10 @@ export default function Contact() {
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Frequently Asked Questions
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 Find answers to common questions about our services and process
               </p>
             </div>
@@ -450,19 +408,13 @@ export default function Contact() {
               {faqs.map((faq, index) => (
                 <div
                   key={index}
-                  className={`p-6 rounded-xl animate-fade-in-up ${
-                    isDarkMode ? 'card-dark' : 'card-light'
-                  }`}
+                  className="p-6 rounded-xl animate-fade-in-up card-light"
                   style={{ animationDelay: `${index * 150}ms` }}
                 >
-                  <h3 className={`text-lg font-semibold mb-3 ${
-                    isDarkMode ? 'text-lightText' : 'text-gray-900'
-                  }`}>
+                  <h3 className="text-lg font-semibold mb-3 text-gray-900">
                     {faq.question}
                   </h3>
-                  <p className={`${
-                    isDarkMode ? 'text-moon-200' : 'text-gray-600'
-                  }`}>
+                  <p className="text-moon-200 text-gray-600">
                     {faq.answer}
                   </p>
                 </div>
@@ -472,11 +424,7 @@ export default function Contact() {
         </section>
 
         {/* CTA Section */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-r from-moonBlue-900 to-moon-900' 
-            : 'bg-gradient-to-r from-sun-500 to-sunOrange-500'
-        } text-white`}>
+        <section className="section-padding bg-gradient-to-r from-sun-500 to-sunOrange-500 text-white">
           <div className="container-custom text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Start Your Project?

@@ -3,20 +3,17 @@ import Head from 'next/head';
 import Link from 'next/link';
 import { ArrowRight, Users, Award, Code, Palette, Shield, GraduationCap } from 'lucide-react';
 import Navbar from '../../components/Navbar';
-import { useDarkMode } from '../../components/DarkModeContext';
 import Footer from '../../components/Footer';
 import TeamCard from '../../components/TeamCard';
 
 export default function OurTeam() {
-  const { isDarkMode } = useDarkMode();
-
   // Team members data
   const teamMembers = [
     {
       name: 'Rajesh Kumar',
       role: 'Founder & CEO',
       bio: 'Visionary leader with 10+ years in digital transformation. Passionate about building innovative solutions that drive business growth.',
-      image: '/images/team/rajesh-kumar.jpg',
+      image: '/images/Image1.jpg',
       social: {
         linkedin: 'https://linkedin.com/in/rajeshkumar',
         twitter: 'https://twitter.com/rajeshkumar',
@@ -27,7 +24,7 @@ export default function OurTeam() {
       name: 'Priya Sharma',
       role: 'CTO & Co-Founder',
       bio: 'Full-stack architect with expertise in scalable web applications. Leads our technical vision and development practices.',
-      image: '/images/team/priya-sharma.jpg',
+      image: '/images/image2.jpg',
       social: {
         linkedin: 'https://linkedin.com/in/priyasharma',
         github: 'https://github.com/priyasharma',
@@ -38,7 +35,7 @@ export default function OurTeam() {
       name: 'Amit Singh',
       role: 'Lead Developer',
       bio: 'Expert in React, Node.js, and cloud technologies. Mentors junior developers and drives code quality initiatives.',
-      image: '/images/team/amit-singh.jpg',
+      image: '/images/image3.jpg',
       social: {
         linkedin: 'https://linkedin.com/in/amitsingh',
         github: 'https://github.com/amitsingh',
@@ -152,20 +149,12 @@ export default function OurTeam() {
 
       <main className="pt-16 md:pt-20">
         {/* Hero Section */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-br from-darkBg via-moon-900 to-darkBg' 
-            : 'bg-gradient-to-br from-sun-50 via-white to-sunOrange-50'
-        }`}>
+        <section className="section-padding bg-gradient-to-br from-sun-50 via-white to-sunOrange-50">
           <div className="container-custom text-center">
-            <h1 className={`text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up ${
-              isDarkMode ? 'text-lightText' : 'text-gray-900'
-            }`}>
-              Meet Our <span className={`${isDarkMode ? 'text-gradient-moon' : 'text-gradient-sun'}`}>Amazing Team</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up text-gray-900">
+              Meet Our <span className="text-gradient-sun">Amazing Team</span>
             </h1>
-            <p className={`text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up ${
-              isDarkMode ? 'text-moon-200' : 'text-gray-600'
-            }`} style={{ animationDelay: '200ms' }}>
+            <p className="text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up text-gray-600" style={{ animationDelay: '200ms' }}>
               Behind every great project is a great team. Meet the passionate individuals who bring 
               our vision to life and make your digital dreams a reality.
             </p>
@@ -179,14 +168,10 @@ export default function OurTeam() {
                 { number: '100%', label: 'Dedication' }
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className={`text-2xl md:text-3xl font-bold mb-2 ${
-                    isDarkMode ? 'text-moonBlue-400' : 'text-sun-500'
-                  }`}>
+                  <div className="text-2xl md:text-3xl font-bold mb-2 text-sun-500">
                     {stat.number}
                   </div>
-                  <div className={`text-sm ${
-                    isDarkMode ? 'text-moon-300' : 'text-gray-600'
-                  }`}>
+                  <div className="text-sm text-gray-600">
                     {stat.label}
                   </div>
                 </div>
@@ -199,14 +184,10 @@ export default function OurTeam() {
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Leadership Team
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 The visionaries leading our company towards digital excellence
               </p>
             </div>
@@ -224,19 +205,13 @@ export default function OurTeam() {
         </section>
 
         {/* Departments */}
-        <section className={`section-padding ${
-          isDarkMode ? 'bg-moon-900/50' : 'bg-gray-50'
-        }`}>
+        <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Our Departments
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 Specialized teams working together to deliver exceptional results
               </p>
             </div>
@@ -247,29 +222,19 @@ export default function OurTeam() {
                 return (
                   <div
                     key={dept.name}
-                    className={`p-6 rounded-xl text-center animate-fade-in-up ${
-                      isDarkMode ? 'card-dark' : 'card-light'
-                    }`}
+                    className="p-6 rounded-xl text-center animate-fade-in-up card-light"
                     style={{ animationDelay: `${index * 150}ms` }}
                   >
-                    <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center ${
-                      isDarkMode ? 'bg-moon-gradient' : 'bg-sun-gradient'
-                    }`}>
+                    <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center bg-sun-gradient">
                       <IconComponent size={32} className="text-white" />
                     </div>
-                    <h3 className={`text-xl font-semibold mb-2 ${
-                      isDarkMode ? 'text-lightText' : 'text-gray-900'
-                    }`}>
+                    <h3 className="text-xl font-semibold mb-2 text-gray-900">
                       {dept.name}
                     </h3>
-                    <p className={`text-sm mb-3 ${
-                      isDarkMode ? 'text-moon-300' : 'text-gray-600'
-                    }`}>
+                    <p className="text-sm mb-3 text-gray-600">
                       {dept.description}
                     </p>
-                    <span className={`text-sm font-medium ${
-                      isDarkMode ? 'text-moonBlue-400' : 'text-sun-500'
-                    }`}>
+                    <span className="text-sm font-medium text-sun-500">
                       {dept.count}
                     </span>
                   </div>
@@ -283,14 +248,10 @@ export default function OurTeam() {
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Core Team Members
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 Get to know the dedicated professionals who make the magic happen
               </p>
             </div>
@@ -308,19 +269,13 @@ export default function OurTeam() {
         </section>
 
         {/* Company Culture */}
-        <section className={`section-padding ${
-          isDarkMode ? 'bg-moon-900/50' : 'bg-gray-50'
-        }`}>
+        <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Our Culture & Values
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 We believe in creating an environment where everyone can thrive and do their best work
               </p>
             </div>
@@ -330,17 +285,11 @@ export default function OurTeam() {
                 {cultureHighlights.map((highlight, index) => (
                   <div
                     key={index}
-                    className={`flex items-center space-x-3 p-4 rounded-lg animate-fade-in-up ${
-                      isDarkMode ? 'bg-moon-800/50' : 'bg-white/50'
-                    }`}
+                    className="flex items-center space-x-3 p-4 rounded-lg animate-fade-in-up bg-white/50"
                     style={{ animationDelay: `${index * 100}ms` }}
                   >
-                    <div className={`w-2 h-2 rounded-full flex-shrink-0 ${
-                      isDarkMode ? 'bg-moonBlue-400' : 'bg-sun-500'
-                    }`} />
-                    <span className={`${
-                      isDarkMode ? 'text-moon-200' : 'text-gray-700'
-                    }`}>
+                    <div className="w-2 h-2 rounded-full flex-shrink-0 bg-sun-500" />
+                    <span className="text-gray-700">
                       {highlight}
                     </span>
                   </div>
@@ -351,11 +300,7 @@ export default function OurTeam() {
         </section>
 
         {/* Join Our Team CTA */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-r from-moonBlue-900 to-moon-900' 
-            : 'bg-gradient-to-r from-sun-500 to-sunOrange-500'
-        } text-white`}>
+        <section className="section-padding bg-gradient-to-r from-sun-500 to-sunOrange-500 text-white">
           <div className="container-custom text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Join Our Team?

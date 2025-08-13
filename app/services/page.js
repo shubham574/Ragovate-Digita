@@ -2,13 +2,11 @@
 import Head from 'next/head';
 import Link from 'next/link';
 import { Code, Smartphone, Palette, Bug, GraduationCap, ArrowRight } from 'lucide-react';
-import { useDarkMode } from '../../components/DarkModeContext';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import ServiceCard from '../../components/ServiceCard';
 
 export default function Services() {
-const { isDarkMode, toggleDarkMode } = useDarkMode();
   // Comprehensive services data
   const services = [
     {
@@ -126,20 +124,12 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
 
       <main className="pt-16 md:pt-20">
         {/* Hero Section */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-br from-darkBg via-moon-900 to-darkBg' 
-            : 'bg-gradient-to-br from-sun-50 via-white to-sunOrange-50'
-        }`}>
+        <section className="section-padding bg-gradient-to-br from-sun-50 via-white to-sunOrange-50">
           <div className="container-custom text-center">
-            <h1 className={`text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up ${
-              isDarkMode ? 'text-lightText' : 'text-gray-900'
-            }`}>
-              Our <span className={`${isDarkMode ? 'text-gradient-moon' : 'text-gradient-sun'}`}>Services</span>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 animate-fade-in-up text-gray-900">
+              Our <span className="text-gradient-sun">Services</span>
             </h1>
-            <p className={`text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up ${
-              isDarkMode ? 'text-moon-200' : 'text-gray-600'
-            }`} style={{ animationDelay: '200ms' }}>
+            <p className="text-xl max-w-3xl mx-auto mb-8 animate-fade-in-up text-gray-600" style={{ animationDelay: '200ms' }}>
               We offer comprehensive digital solutions to help your business thrive in the digital age. 
               From concept to deployment, we're your trusted technology partner.
             </p>
@@ -163,19 +153,13 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
         </section>
 
         {/* Our Process */}
-        <section className={`section-padding ${
-          isDarkMode ? 'bg-moon-900/50' : 'bg-gray-50'
-        }`}>
+        <section className="section-padding bg-gray-50">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Our Development Process
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 We follow a structured approach to ensure every project is delivered 
                 on time, within budget, and exceeds expectations.
               </p>
@@ -188,21 +172,13 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
                   className="text-center animate-fade-in-up"
                   style={{ animationDelay: `${index * 200}ms` }}
                 >
-                  <div className={`w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold ${
-                    isDarkMode 
-                      ? 'bg-moon-gradient text-lightText' 
-                      : 'bg-sun-gradient text-white'
-                  }`}>
+                  <div className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-2xl font-bold bg-sun-gradient text-white">
                     {step.step}
                   </div>
-                  <h3 className={`text-xl font-semibold mb-3 ${
-                    isDarkMode ? 'text-lightText' : 'text-gray-900'
-                  }`}>
+                  <h3 className="text-xl font-semibold mb-3 text-gray-900">
                     {step.title}
                   </h3>
-                  <p className={`${
-                    isDarkMode ? 'text-moon-300' : 'text-gray-600'
-                  }`}>
+                  <p className="text-gray-600">
                     {step.description}
                   </p>
                 </div>
@@ -215,14 +191,10 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
         <section className="section-padding">
           <div className="container-custom">
             <div className="text-center mb-12">
-              <h2 className={`text-3xl md:text-4xl font-bold mb-4 ${
-                isDarkMode ? 'text-lightText' : 'text-gray-900'
-              }`}>
+              <h2 className="text-3xl md:text-4xl font-bold mb-4 text-gray-900">
                 Technologies We Use
               </h2>
-              <p className={`text-lg max-w-2xl mx-auto ${
-                isDarkMode ? 'text-moon-200' : 'text-gray-600'
-              }`}>
+              <p className="text-lg max-w-2xl mx-auto text-gray-600">
                 We work with the latest technologies and frameworks to deliver 
                 cutting-edge solutions.
               </p>
@@ -236,16 +208,10 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
               ].map((tech, index) => (
                 <div
                   key={tech}
-                  className={`p-4 rounded-lg text-center transition-all duration-300 hover:scale-105 animate-fade-in-up ${
-                    isDarkMode 
-                      ? 'card-dark hover:bg-moon-700' 
-                      : 'card-light hover:bg-sun-50'
-                  }`}
+                  className="p-4 rounded-lg text-center transition-all duration-300 hover:scale-105 animate-fade-in-up card-light hover:bg-sun-50"
                   style={{ animationDelay: `${index * 50}ms` }}
                 >
-                  <span className={`font-medium ${
-                    isDarkMode ? 'text-lightText' : 'text-gray-900'
-                  }`}>
+                  <span className="font-medium text-gray-900">
                     {tech}
                   </span>
                 </div>
@@ -255,11 +221,7 @@ const { isDarkMode, toggleDarkMode } = useDarkMode();
         </section>
 
         {/* CTA Section */}
-        <section className={`section-padding ${
-          isDarkMode 
-            ? 'bg-gradient-to-r from-moonBlue-900 to-moon-900' 
-            : 'bg-gradient-to-r from-sun-500 to-sunOrange-500'
-        } text-white`}>
+        <section className="section-padding bg-gradient-to-r from-sun-500 to-sunOrange-500 text-white">
           <div className="container-custom text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
               Ready to Get Started?
