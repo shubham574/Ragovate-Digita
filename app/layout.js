@@ -1,6 +1,7 @@
-import ClientWrapper from '../components/ClientWrapper';
 import { Inter, Roboto_Mono } from "next/font/google";
 import "../styles/globals.css";
+import LoaderLayout from "../components/LoaderLayout";
+import ClientWrapper from "../components/ClientWrapper";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -20,9 +21,12 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className={`${inter.variable} ${robotoMono.variable} antialiased`}>
-        <ClientWrapper>{children}</ClientWrapper>
+      <body className={`${inter.variable} ${robotoMono.variable} antialiased`} style={{ margin: 0, padding: 0 }}>
+       <ClientWrapper><LoaderLayout>{children}</LoaderLayout></ClientWrapper> 
       </body>
     </html>
   );
 }
+
+
+
