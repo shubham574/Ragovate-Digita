@@ -86,7 +86,7 @@ const Navbar = () => {
             <DarkModeToggle />
             <button
               onClick={toggleMobileMenu}
-              className="p-2 text-gray-700 dark:text-lightText hover:text-sun-500 dark:hover:text-moonBlue-400 transition-colors duration-200"
+              className="pl-6 text-gray-700 dark:text-lightText hover:text-sun-500 "
               aria-label="Toggle mobile menu"
             >
               {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -96,32 +96,31 @@ const Navbar = () => {
       </div>
 
       {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ${
-        isMobileMenuOpen 
-          ? 'opacity-100 visible' 
-          : 'opacity-0 invisible'
-      }`}>
-        <div className="bg-white dark:bg-darkBg shadow-lg border-t border-gray-200 dark:border-moon-700">
-          <div className="container-custom py-4">
-           {navLinks.map((link) => (
-  <Link
-  key={link.name}
-  href={link.href}
-  className={`block py-3 px-4 rounded-lg transition-colors duration-200 ${
-    isActiveLink(link.href)
-      ? 'bg-sun-50 dark:bg-moon-800 text-sun-500 dark:text-moonBlue-400'
-      : 'text-gray-700 dark:text-lightText hover:bg-gray-50 dark:hover:bg-moon-800'
+      <div
+  className={`md:hidden fixed top-16 left-0 w-full z-40 transition-all duration-300 ${
+    isMobileMenuOpen ? 'opacity-100 visible' : 'opacity-0 invisible'
   }`}
-  onClick={closeMobileMenu}
-  style={{ cursor: 'pointer' }}
 >
-  {link.name}
-</Link>
-))}
-          </div>
-        </div>
-      </div>
-
+  <div className="bg-white dark:bg-darkBg shadow-lg border-t border-gray-200 dark:border-moon-700">
+    <div className="container-custom py-4">
+      {navLinks.map((link) => (
+        <Link
+          key={link.name}
+          href={link.href}
+          className={`block py-3 px-4 rounded-lg transition-colors duration-200 ${
+            isActiveLink(link.href)
+              ? 'bg-sun-50 dark:bg-moon-800 text-sun-500 dark:text-moonBlue-400'
+              : 'text-gray-700 dark:text-lightText hover:bg-gray-50 dark:hover:bg-moon-800'
+          }`}
+          onClick={closeMobileMenu}
+          style={{ cursor: 'pointer' }}
+        >
+          {link.name}
+        </Link>
+      ))}
+    </div>
+  </div>
+</div>
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <div
