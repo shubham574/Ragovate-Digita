@@ -1,13 +1,13 @@
 // Footer component with company info and social links
 import Link from 'next/link';
-import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter } from 'lucide-react';
+import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, X } from 'lucide-react';
 import { useDarkMode } from '../components/DarkModeContext';
 const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
     { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/ragovatedigital' },
-    { name: 'Twitter', icon: Twitter, href: 'https://twitter.com/ragovatedigital' },
+    { name: 'X', icon: X, href: 'https://twitter.com/ragovatedigital' },
     { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/ragovatedigital' },
     { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/ragovatedigital' }
   ];
@@ -122,19 +122,7 @@ const Footer = () => {
             </div>
             
             {/* Newsletter Signup */}
-            <div className="space-y-2">
-              <p className="text-sm text-gray-300">Subscribe to our newsletter</p>
-              <div className="flex">
-                <input
-                  type="email"
-                  placeholder="Enter your email"
-                  className="flex-1 px-3 py-2 text-sm bg-gray-800 border border-gray-700 rounded-l-lg focus:outline-none focus:ring-2 focus:ring-sun-500 text-white placeholder-gray-400"
-                />
-                <button className="px-4 py-2 bg-sun-500 hover:bg-sun-600 text-white text-sm font-medium rounded-r-lg transition-colors duration-200">
-                  Subscribe
-                </button>
-              </div>
-            </div>
+            
           </div>
         </div>
       </div>
