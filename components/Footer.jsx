@@ -139,10 +139,10 @@ const Footer = () => {
               <Link href="/privacy" className="text-gray-400 hover:text-sun-400 transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="text-gray-400 hover:text-sun-400 transition-colors duration-200">
+              <Link href="/terms" className="text-gray-400 hover:text-sun-400 transition-colors duration-200 ">
                 Terms of Service
               </Link>
-              <Link href="/contact" className="text-gray-400 hover:text-sun-400 transition-colors duration-200">
+              <Link href="/contact" className="text-gray-400 hover:text-sun-400 transition-colors duration-200 pr-4">
                 Support
               </Link>
             </div>
