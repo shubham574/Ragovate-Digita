@@ -238,8 +238,11 @@ export default function Contact() {
 
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* Name Field */}
-                  <div>
-                    <label htmlFor="name" className="block text-sm font-medium mb-2 text-gray-900">
+             <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium mb-2 text-gray-900"
+                    >
                       Full Name *
                     </label>
                     <input
@@ -247,14 +250,20 @@ export default function Contact() {
                       id="name"
                       name="name"
                       value={formData.name}
-                      onChange={handleInputChange}
-                      className={`form-input ${errors.name ? 'border-red-500' : ''}`}
+                      onChange={(e) => {
+                        // Allow only alphabets and spaces
+                        const value = e.target.value.replace(/[^a-zA-Z\s]/g, "");
+                        handleInputChange({
+                          target: { name: "name", value },
+                        });
+                      }}
+                      className={`form-input ${errors.name ? "border-red-500" : ""}`}
                       placeholder="Enter your full name"
                     />
                     {errors.name && (
                       <p className="mt-1 text-sm text-red-500">{errors.name}</p>
                     )}
-                  </div>
+              </div>
 
                   {/* Email Field */}
                   <div>
@@ -276,23 +285,33 @@ export default function Contact() {
                   </div>
 
                   {/* Phone Field */}
-                  <div>
-                    <label htmlFor="phone" className="block text-sm font-medium mb-2 text-gray-900">
-                      Phone Number *
-                    </label>
-                    <input
-                      type="tel"
-                      id="phone"
-                      name="phone"
-                      value={formData.phone}
-                      onChange={handleInputChange}
-                      className={`form-input ${errors.phone ? 'border-red-500' : ''}`}
-                      placeholder="Enter your phone number"
-                    />
-                    {errors.phone && (
-                      <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-                    )}
-                  </div>
+                 <div>
+  <label
+    htmlFor="phone"
+    className="block text-sm font-medium mb-2 text-gray-900"
+  >
+    Phone Number *
+  </label>
+  <input
+    type="tel"
+    id="phone"
+    name="phone"
+    value={formData.phone}
+    onChange={(e) => {
+      // Allow only numbers
+      const value = e.target.value.replace(/[^0-9]/g, "");
+      handleInputChange({
+        target: { name: "phone", value },
+      });
+    }}
+    maxLength={10} // optional: limit to 10 digits
+    className={`form-input ${errors.phone ? "border-red-500" : ""}`}
+    placeholder="Enter your phone number"
+  />
+  {errors.phone && (
+    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+  )}
+</div>
 
                   {/* Message Field */}
                   <div>

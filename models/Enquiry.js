@@ -2,12 +2,14 @@
 import mongoose from 'mongoose';
 
 const EnquirySchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: [true, 'Name is required'],
-    trim: true,
-    maxlength: [100, 'Name cannot exceed 100 characters']
-  },
+name: {
+  type: String,
+  required: [true, 'Name is required'],
+  trim: true,
+  maxlength: [100, 'Name cannot exceed 100 characters'],
+  match: [/^[a-zA-Z\s]+$/, 'Name can only contain letters and spaces'] 
+},
+
   email: {
     type: String,
     required: [true, 'Email is required'],
