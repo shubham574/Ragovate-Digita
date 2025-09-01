@@ -1,4 +1,4 @@
-import dbConnect from '../../lib/my mongodb';
+import dbConnect from '../../lib/mongodb';
 import Enquiry from '../models/enquiry';
 import nodemailer from 'nodemailer';
 
