@@ -1,6 +1,7 @@
 // Mongoose model for contact enquiries
 import mongoose from 'mongoose';
 
+
 const EnquirySchema = new mongoose.Schema({
 name: {
   type: String,
