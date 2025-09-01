@@ -52,9 +52,7 @@ export default function OurTeam() {
       role: 'CEO',
       bio: 'Manish is a visionary CEO, leading the company with innovation, strategic growth, and a people-first approach.',
       image: '/images/image4.png',
-    },
-    
-    
+    } 
   ];
 
   // ✅ Departments

@@ -1,5 +1,5 @@
 import dbConnect from '../../lib/mongodb';
-import Enquiry from '../models/enquiry';
+import Enquiry from '../models/Enquiry';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
