@@ -51,14 +51,9 @@ export default function OurTeam() {
       name: 'Manish Chaurasiya',
       role: 'CEO',
       bio: 'Manish is a visionary CEO, leading the company with innovation, strategic growth, and a people-first approach.',
-      image: '/images/team/sneha-patel.jpg',
+      image: '/images/image4.png',
     },
-    {
-      name: 'Manish Chaurasiya',
-      role: 'Mobile App Developer',
-      bio: 'Specialized in React Native and Flutter development. Built 50+ mobile applications for various industries.',
-      image: '/images/team/vikash-gupta.jpg',
-    },
+    
     
   ];
 
