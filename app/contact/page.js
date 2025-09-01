@@ -72,69 +72,62 @@ export default function Contact() {
   };
 
   // Handle form submission
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
 
-    if (!validateForm()) {
-      toast.error('Please fix the errors in the form');
-      return;
+  if (!validateForm()) {
+    toast.error('Please fix the errors in the form');
+    return;
+  }
+
+  setIsSubmitting(true);
+
+  try {
+    const res = await fetch('/api/enquiry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(formData),
+    });
+
+    const result = await res.json();
+
+    if (res.ok) {
+      toast.success('Thank you! Your enquiry has been submitted successfully.');
+      setFormData({ name: '', email: '', phone: '', message: '' });
+      setErrors({});
+      setJustSubmitted(true);
+
+      setTimeout(() => setJustSubmitted(false), 3000);
+    } else {
+      toast.error(result.message || 'Something went wrong. Please try again.');
     }
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    toast.error('Network error. Please check your connection and try again.');
+  } finally {
+    setIsSubmitting(false);
+  }
+};
 
-    setIsSubmitting(true);
-
-    try {
-      const response = await fetch('/api/enquiry', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const result = await response.json();
-
-     if (response.ok) {
-  toast.success('Thank you! Your enquiry has been submitted successfully.');
-  setFormData({ name: '', email: '', phone: '', message: '' });
-  setErrors({});
-  
-  // Show success state on button
-  setJustSubmitted(true);
-  
-  // Reset button state after 3 seconds
-  setTimeout(() => {
-    setJustSubmitted(false);
-  }, 3000);
-  
-} else {
-        toast.error(result.message || 'Something went wrong. Please try again.');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      toast.error('Network error. Please check your connection and try again.');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
 
   // Contact information
   const contactInfo = [
     {
       icon: Mail,
       title: 'Email Us',
-      details: 'info@ragovatedigital.com',
+      details: 'sunshinegroup1997@gmail.com',
       description: 'Send us your queries anytime'
     },
     {
       icon: Phone,
       title: 'Call Us',
-      details: '+91 98765 43210',
+      details: '​﻿﻿+91 6388146139﻿',
       description: 'Mon-Fri from 9am to 6pm'
     },
     {
       icon: MapPin,
       title: 'Visit Us',
-      details: 'Varanasi, Uttar Pradesh, India',
+      details: 'Kannauj, Uttar Pradesh, India',
       description: 'Come say hello at our office'
     },
     {
@@ -286,32 +279,32 @@ export default function Contact() {
 
                   {/* Phone Field */}
                  <div>
-  <label
-    htmlFor="phone"
-    className="block text-sm font-medium mb-2 text-gray-900"
-  >
-    Phone Number *
-  </label>
-  <input
-    type="tel"
-    id="phone"
-    name="phone"
-    value={formData.phone}
-    onChange={(e) => {
-      // Allow only numbers
-      const value = e.target.value.replace(/[^0-9]/g, "");
-      handleInputChange({
-        target: { name: "phone", value },
-      });
-    }}
-    maxLength={10} // optional: limit to 10 digits
-    className={`form-input ${errors.phone ? "border-red-500" : ""}`}
-    placeholder="Enter your phone number"
-  />
-  {errors.phone && (
-    <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
-  )}
-</div>
+                      <label
+                        htmlFor="phone"
+                        className="block text-sm font-medium mb-2 text-gray-900"
+                      >
+                        Phone Number *
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={(e) => {
+                          // Allow only numbers
+                          const value = e.target.value.replace(/[^0-9]/g, "");
+                          handleInputChange({
+                            target: { name: "phone", value },
+                          });
+                        }} handleSubmit
+                        maxLength={10} // optional: limit to 10 digits
+                        className={`form-input ${errors.phone ? "border-red-500" : ""}`}
+                        placeholder="Enter your phone number"
+                      />
+                      {errors.phone && (
+                        <p className="mt-1 text-sm text-red-500">{errors.phone}</p>
+                      )}
+                </div>
 
                   {/* Message Field */}
                   <div>
@@ -390,22 +383,29 @@ export default function Contact() {
                 </div>
 
                 {/* Office Map Placeholder */}
-                <div className="p-8 rounded-2xl animate-fade-in-up card-light" style={{ animationDelay: '400ms' }}>
-                  <h3 className="text-xl font-bold mb-4 text-gray-900">
-                    Visit Our Office
-                  </h3>
-                  <div className="w-full h-48 rounded-lg flex items-center justify-center bg-gray-200">
-                    <div className="text-center">
-                      <MapPin size={32} className="mx-auto mb-2 text-sun-500" />
-                      <p className="text-sm text-gray-600">
-                        Interactive Map Coming Soon
-                      </p>
-                      <p className="text-xs mt-1 text-gray-500">
-                        Varanasi, Uttar Pradesh, India
-                      </p>
-                    </div>
+                <div
+                    className="p-8 rounded-2xl animate-fade-in-up card-light"
+                    style={{ animationDelay: '400ms' }}
+                  >
+                    <h3 className="text-xl font-bold mb-4 text-gray-900">
+                      Visit Our Office
+                    </h3>
+                    <div className="w-full h-48 rounded-lg overflow-hidden">
+                     <iframe
+                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14165.796240312738!2d79.9065!3d27.0464!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjfCsDAyJzQ3LjAiTiA3OcKwNTQnNDguMCJF!5e0!3m2!1sen!2sin!4v1692945672000!5m2!1sen!2sin"
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      allowFullScreen
+                      loading="lazy"
+                      referrerPolicy="no-referrer-when-downgrade"
+                    ></iframe>
                   </div>
+                  <p className="text-xs mt-2 text-gray-500 text-center">
+                    27°02'47.0"N 79°54'48.0"E – Farrukhabad, Uttar Pradesh, India
+                  </p>
                 </div>
+
               </div>
             </div>
           </div>
@@ -460,7 +460,7 @@ export default function Contact() {
                 Fill Contact Form
               </button>
               <a
-                href="tel:+919876543210"
+                href="tel:​+91 6388146139"
                 className="border-2 border-white text-white hover:bg-white hover:text-gray-900 font-semibold py-3 px-8 rounded-lg transition-colors duration-300"
               >
                 Call Now

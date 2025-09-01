@@ -20,13 +20,6 @@ const Footer = () => {
     { name: 'Contact Us', href: '/contact' }
   ];
 
-  const services = [
-    'Web Development',
-    'App Development',
-    'Web Design',
-    'Software Testing & QA',
-    'Industrial Training'
-  ];
 
   return (
     <footer className="bg-gray-900 dark:bg-black text-white">
@@ -51,15 +44,15 @@ const Footer = () => {
             <div className="space-y-2">
               <div className="flex items-center space-x-3 text-sm text-gray-300">
                 <Mail size={16} className="text-sun-400" />
-                <span>info@ragovatedigital.com</span>
+                <span>sunshinegroup1997@gmail.com</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-300">
                 <Phone size={16} className="text-sun-400" />
-                <span>+91 98765 43210</span>
+                <span>﻿+91 6388146139</span>
               </div>
               <div className="flex items-center space-x-3 text-sm text-gray-300">
                 <MapPin size={16} className="text-sun-400" />
-                <span>Varanasi, Uttar Pradesh, India</span>
+                <span>Makrand Nagar, Kannauj, 209733, U. P.</span>
               </div>
             </div>
           </div>
@@ -81,19 +74,7 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
-          <div className="space-y-4">
-            <h3 className="text-lg font-semibold text-sun-400">Our Services</h3>
-            <ul className="space-y-2">
-              {services.map((service) => (
-                <li key={service}>
-                  <span className="text-gray-300 text-sm">
-                    {service}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          </div>
+         
 
           {/* Newsletter & Social */}
           <div className="space-y-4">
@@ -121,8 +102,7 @@ const Footer = () => {
               })}
             </div>
             
-            {/* Newsletter Signup */}
-            
+                     
           </div>
         </div>
       </div>
