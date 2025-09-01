@@ -51,7 +51,7 @@ export default function OurTeam() {
       name: 'Manish Chaurasiya',
       role: 'CEO',
       bio: 'Manish is a visionary CEO, leading the company with innovation, strategic growth, and a people-first approach.',
-      image: '/images/image4.png',
+      image: '/images/image4.jpg',
     } 
   ];
 
