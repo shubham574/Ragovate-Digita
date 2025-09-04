@@ -12,9 +12,9 @@ import ServiceCard from '../components/ServiceCard';
 export default function Home() {
 
    const statsData = [
-    { number: 500, suffix: "+", label: "Projects Completed" },
-    { number: 200, suffix: "+", label: "Happy Clients" },
-    { number: 50, suffix: "+", label: "Team Members" },
+    { number: 50, suffix: "+", label: "Projects Completed" },
+    { number: 50, suffix: "+", label: "Happy Clients" },
+    { number: 20, suffix: "+", label: "Team Members" },
     { number: 100, suffix: "%", label: "Placement Support" }
   ];
     const [counts, setCounts] = useState(statsData.map(() => 0));

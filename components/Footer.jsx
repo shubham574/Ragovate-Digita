@@ -6,10 +6,10 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
   
   const socialLinks = [
-    { name: 'Facebook', icon: Facebook, href: 'https://facebook.com/ragovatedigital' },
-    { name: 'X', icon: X, href: 'https://twitter.com/ragovatedigital' },
-    { name: 'LinkedIn', icon: Linkedin, href: 'https://linkedin.com/company/ragovatedigital' },
-    { name: 'Instagram', icon: Instagram, href: 'https://instagram.com/ragovatedigital' }
+    { name: 'Facebook', icon: Facebook, href: '#' },
+    { name: 'X', icon: X, href: '#' },
+    { name: 'LinkedIn', icon: Linkedin, href: 'https://www.linkedin.com/company/ragovate-digital-llp' },
+    { name: 'Instagram', icon: Instagram, href: 'https://www.instagram.com/ragovatedigitalllp/' }
   ];
 
   const quickLinks = [
